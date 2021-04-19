@@ -1,0 +1,10 @@
+echo -e “gene\tfunction_1\tmetabolism” > annotation1.tab
+cat annotation.tab >> annotation1.tab
+
+head -1 expression.tab > expression2.tab
+tail -n +2 expression.tab | sort -t$’\t’ -k 1 >> expression2.tab
+
+head -1 annotation1.tab > annotation2.tab
+tail -n +2 annotation1.tab | sort -t$’\t’ -k 1 >> annotation2.tab
+
+join -t$'\t' -o 1.1 ,2.2 ,1.2 ,2.3 -- header expression2.tab annotation2.tab
